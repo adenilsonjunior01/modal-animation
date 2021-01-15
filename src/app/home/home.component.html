@@ -1,14 +1,21 @@
 <div class="container">
   <mat-card>
-    <p>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
+    <p class="lottie-format">
+      <ng-lottie [options]="options" width="500px" height="400px"></ng-lottie>
     </p>
     <mat-card-content>
-      <mat-card-title translate>Hello world !</mat-card-title>
-      <mat-card-subtitle>
-        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
-        <q [hidden]="isLoading">{{ quote }}</q>
-      </mat-card-subtitle>
+      <p class="text-sub">Animações</p>
+      <section fxflexfill fxlayoutgap="10px grid">
+        <ng-container *ngFor="let effect of array">
+          <button mat-raised-button color="primary" (click)="setEffectModal(effect.effect)">{{ effect.label }}</button>
+        </ng-container>
+      </section>
     </mat-card-content>
   </mat-card>
 </div>
+<app-modal-animation modalID="modal" [modalClass]="modalClass">
+  <div class="container contentClass">
+    <p>Teste</p>
+    <button mat-stroked-button color="primary" (click)="closeModal()">close</button>
+  </div>
+</app-modal-animation>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
+import { ModalAnimationComponent } from '../@shared/modal-animation/modal-animation.component';
+import { TypesButton } from '../mocks/types-button';
 
 @Component({
   selector: 'app-home',
@@ -9,22 +9,26 @@ import { QuoteService } from './quote.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  quote: string | undefined;
-  isLoading = false;
+  @ViewChild(ModalAnimationComponent, {static: false}) modalmodalAnimation: any;
+  options: AnimationOptions = {
+    path: '../assets/lottie-working.json',
+  };
+  modalClass: string;
+  effects = new TypesButton();
+  array: any[] = [];
 
-  constructor(private quoteService: QuoteService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+    this.array = this.effects.types();
+  }
+
+  public setEffectModal(effect: string, id?: string): void {
+    this.modalClass = effect;
+    setTimeout(() => this.modalmodalAnimation.show('modal'), 300);
+  }
+
+  public closeModal() {
+    this.modalmodalAnimation.close('modal');
   }
 }
