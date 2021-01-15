@@ -24,6 +24,42 @@ button {
 }
 
 .text-sub {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 600;
+  color: #bcbcbc;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: #44A08D;
+
+  span {
+    color: #FFFFFF;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+.pt-0 {
+  padding-top: 0 !important;
+}
+
+.mat-card {
+  background: -webkit-linear-gradient(to bottom, #45a247, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #45a247, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+footer {
+  padding: 10px;
+  color: #bcbcbc;
+  font-weight: 400;
+  font-size: .9rem;
 }

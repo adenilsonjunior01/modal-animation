@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit {
   modalClass: string;
   effects = new TypesButton();
   array: any[] = [];
+  year: number;
 
   constructor() {}
 
   ngOnInit() {
     this.array = this.effects.types();
+    this.getYear();
   }
 
   public setEffectModal(effect: string, id?: string): void {
@@ -30,5 +32,10 @@ export class HomeComponent implements OnInit {
 
   public closeModal() {
     this.modalmodalAnimation.close('modal');
+  }
+
+  private getYear() {
+    const date = new Date();
+    this.year = date.getFullYear();
   }
 }
